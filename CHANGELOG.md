@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.1.1 - 2020-10-15
+
+
+### Bug Fixes
+
+[d1594b](https://github.com/oknozor/rosa-parse/commit/d1594b6f0788ea6b81b3b0014ab92dae700dade7) - invalid crate name in README - [oknozor](https://github.com/oknozor)
+
+
+- - -
 ## 0.1.0 - 2020-10-15
 
 
