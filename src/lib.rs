@@ -4,8 +4,6 @@ extern crate anyhow;
 use anyhow::Result;
 use serde::Serialize;
 use serde_json::Value as Json;
-use serde_yaml::Value as Yaml;
-use toml::Value as Toml;
 
 pub enum Format {
     Toml,
@@ -21,13 +19,14 @@ pub fn convert(content: &str, target: Format) -> Result<String> {
         return Ok(get_output(&json, &target).unwrap());
     };
 
-    let toml_str = toml::from_str::<Toml>(content)
+    let toml_str = toml::from_str::<Json>(content)
         .map_err(|err| anyhow!("Error deserializing Toml content : \n{}", err));
 
     if let Ok(toml) = toml_str {
         return Ok(get_output(&toml, &target).unwrap());
     }
-    let yaml_str = serde_yaml::from_str::<Yaml>(&content)
+
+    let yaml_str = serde_yaml::from_str::<Json>(&content)
         .map_err(|err| anyhow!("Error deserializing Yaml content : \n{}", err));
 
     if let Ok(yaml) = yaml_str {
@@ -151,6 +150,17 @@ mod tests {
 
         let to = convert(&from, Format::Yaml)?;
         let expected = fs::read_to_string("tests/replica-set.yaml")?;
+
+        assert_eq!(to, expected);
+        Ok(())
+    }
+
+    #[test]
+    fn toml_with_value_after_table_ok() -> Result<()> {
+        let from = fs::read_to_string("tests/values-after-table.yaml")?;
+
+        let to = convert(&from, Format::Toml)?;
+        let expected = fs::read_to_string("tests/values-reordered.toml")?;
 
         assert_eq!(to, expected);
         Ok(())

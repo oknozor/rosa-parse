@@ -1,0 +1,24 @@
+apiVersion = "apps/v1"
+kind = "ReplicaSet"
+
+[metadata]
+name = "whoami"
+
+[spec]
+replicas = 2
+[spec.selector.matchLabels]
+app = "whoami"
+env = "int"
+[spec.template.metadata.labels]
+app = "whoami"
+env = "int"
+[[spec.template.spec.containers]]
+image = "containous/whoami:latest"
+name = "whoami"
+
+[[spec.template.spec.containers.ports]]
+containerPort = 80
+name = "main-port"
+[spec.template.spec.containers.readinessProbe.httpGet]
+path = "/health"
+port = 80
