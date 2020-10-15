@@ -1,6 +1,17 @@
+github = "https://github.com/oknozor/rosa-parse"
 changelog_path = "CHANGELOG.md"
-pre_bump_hooks = []
-post_bump_hooks = []
-authors = []
 
-[commit_types]
+authors = [
+    { signature = "Paul Delafosse", username = "oknozor" },
+]
+
+pre_bump_hooks = [
+    "cargo test",
+    "cargo clippy",
+    "cargo fmt --all",
+    "cargo bump %version",
+]
+
+post_bump_hooks = [
+    "cargo publish",
+]
