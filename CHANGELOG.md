@@ -2,6 +2,20 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.2.0 - 2020-10-15
+
+
+### Miscellaneous Chores
+
+[67c6a7](https://github.com/oknozor/rosa-parse/commit/67c6a75aea5dd9ef895a224bfd6494a07153151a) - add git push cog hook - [oknozor](https://github.com/oknozor)
+
+
+### Features
+
+[5da1a4](https://github.com/oknozor/rosa-parse/commit/5da1a41cf25c3e634089e9dc235f94306cbbddc1) - support values after table by using serde::json::Value for yaml - [oknozor](https://github.com/oknozor)
+
+
+- - -
 ## 0.1.1 - 2020-10-15
 
 
