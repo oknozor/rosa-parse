@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: debian
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: whoami
+      env: int
+  template:
+    metadata:
+      labels:
+        app: whoami
+        env: int
+    spec:
+      containers:
+        - image: debian
+          name: debian
+          ports:
+            - containerPort: 80
+              name: main-port

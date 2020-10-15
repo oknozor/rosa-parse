@@ -1,0 +1,21 @@
+apiVersion = "apps/v1"
+kind = "ReplicaSet"
+
+[metadata]
+name = "debian"
+
+[spec]
+replicas = 5
+[spec.selector.matchLabels]
+app = "whoami"
+env = "int"
+[spec.template.metadata.labels]
+app = "whoami"
+env = "int"
+[[spec.template.spec.containers]]
+image = "debian"
+name = "debian"
+
+[[spec.template.spec.containers.ports]]
+containerPort = 80
+name = "main-port"
