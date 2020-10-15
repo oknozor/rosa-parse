@@ -1,7 +1,7 @@
 use anyhow::Result;
+use rosa_parse::{convert, Format};
 use std::io;
 use std::io::Read;
-use rosa_parse::{convert, Format};
 
 fn main() -> Result<()> {
     let mut stdin = String::new();
