@@ -6,7 +6,7 @@ to stdout.
 ## Installation
 
 ```
-cargo install rosa-parse
+cargo install rosa_parse
 ```
 
 ## Usage
